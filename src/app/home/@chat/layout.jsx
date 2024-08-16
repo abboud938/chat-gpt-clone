@@ -13,7 +13,7 @@ export default function Page({children}){
     // },[end]);
     return (<>
     
-        <div className=" h-full w-full overflow-y-scroll p-2 flex flex-col justify-center items-center gap-3 font-semibold" style={{"scrollbarWidth" : "none"}}>
+        <div className=" h-full w-full overflow-y-scroll p-4 flex flex-col justify-between items-center font-semibold" style={{"scrollbarWidth" : "none"}}>
                 {children}
         </div>
         {/* <div className='' ref={end}/> */}

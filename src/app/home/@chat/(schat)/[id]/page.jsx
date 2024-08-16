@@ -44,7 +44,7 @@ export default function Page({ params }) {
     ) : data?._id === params?.id ? (
       <>
         <div
-          className="h-full overflow-y-scroll p-2 flex flex-col justify-start items-center gap-3 font-semibold w-[80%]"
+          className="h-full overflow-y-scroll p-2 flex flex-col justify-start items-center gap-3 font-semibold w-full md:w-[80%]"
           style={{ scrollbarWidth: "none" }}
         >
           {messages?.map((message) => (
@@ -60,7 +60,7 @@ export default function Page({ params }) {
         <div className="flex justify-center items-center h-[10%] w-full">
           <form
             onSubmit={handleSubmit}
-            className="bg-primaryColor rounded-full  w-1/2 flex items-center justify-between p-4 gap-2"
+            className="bg-primaryColor rounded-full w-full md:w-1/2 flex items-center justify-between p-4 gap-2"
           >
             <label htmlFor="file">
               <FontAwesomeIcon
@@ -68,7 +68,7 @@ export default function Page({ params }) {
                 className="text-secondaryColor w-[25px] h-[25px]"
               />
             </label>
-            <input type="file" hidden id="file" name="file" />
+            <input type="file" hidden id="file" name="file" disabled/>
             <input
               type="text"
               value={input}
@@ -77,6 +77,7 @@ export default function Page({ params }) {
               name="question"
               placeholder="Ask Any Thing ..."
               disabled={isLoading}
+              
             />
             {!isLoading ? (
               <button className="" type="submit">

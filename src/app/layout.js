@@ -21,12 +21,14 @@ export default function RootLayout({ children }) {
         afterSignOutUrl="/"
       >
         <body>
-          <div className="h-screen w-full flex flex-col justify-start items-center">
-            <Navbar />
+          <div className="h-[100vh] w-[100vw] background flex flex-col justify-start items-center">
             <ClerkLoading>
               <Loader />
             </ClerkLoading>
-            <ClerkLoaded>{children}</ClerkLoaded>
+            <ClerkLoaded>
+              <Navbar />
+              {children}
+            </ClerkLoaded>
           </div>
         </body>
       </ClerkProvider>

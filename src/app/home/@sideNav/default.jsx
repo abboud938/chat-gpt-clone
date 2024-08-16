@@ -3,6 +3,7 @@ import Link from "next/link";
 import SideNavLink from "../../components/sideNavLink";
 import {
   faAdd,
+  faArrowCircleRight,
   faEdit,
   faNetworkWired,
   faQuestionCircle,
@@ -11,11 +12,13 @@ import {
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { usePathname, useRouter } from "next/navigation";
-
+import { useState } from "react";
+import {motion,AnimatePresence} from "framer-motion"
 export default function SideNav() {
   const queryClient = useQueryClient();
   const pathname = usePathname();
-  const router = useRouter()
+  const router = useRouter();
+  const [showSideNav,setShowSideNave] = useState(false)
   const { error, data, isLoading } = useQuery({
     queryKey: ["chatList"],
     queryFn: () => fetch("../../api/chats").then((res) => res.json()),
@@ -24,16 +27,21 @@ export default function SideNav() {
     mutationFn: (chatid) =>
       fetch(`../../api/chats/${chatid}`, {
         method: "DELETE",
-      }).then((res) => res.json()),
+      }).then((res)=>{res.json()}),
     onSuccess: () => {
-      console.log(data)
-      queryClient.invalidateQueries({ queryKey: ["chatList"] });
-      // router.push("/home") 
+      queryClient.invalidateQueries({ queryKey: ["chatList"] }).then(()=>{
+      });
+      router.push(`/home`);
     },
   });
+  const handleShowSideNave = (e)=>{
+    e.preventDefault();
+    setShowSideNave(!showSideNav)
+  }
   return (
     <>
-      <div className=" bg-primaryColor w-80 h-full flex flex-col justify-start items-start gap-4 p-4">
+      <div className={`bg-primaryColor md:w-80 ${showSideNav ? "flex" : "hidden"} h-full md:flex flex-col justify-start items-start gap-4 p-4 md:static absolute top0- left-0`}
+      >
         {/* STATIC LINKS */}
         <div className="w-full text-textColor flex flex-col gap-3 justify-start items-start">
           <SideNavLink
@@ -104,6 +112,9 @@ export default function SideNav() {
         </div>
         <hr className=" w-full opacity-50" />
       </div>
+      <button className="absolute left-1 md:hidden" onClick={handleShowSideNave}>
+      <FontAwesomeIcon icon={faArrowCircleRight} className="w-[30px] h-[30px] text-secondaryColor"/>
+    </button>
     </>
   );
 }

@@ -11,9 +11,9 @@ import Logo from "../../../public/logo.png";
 export default function Navbar() {
   return (
     <>
-      <nav className="bg-primaryColor  text-white h-[10%] w-full flex justify-between items-center gap-10 border-b-2 border-secondaryColor shadow-2xl shadow-secondaryColor">
+      <nav className="bg-primaryColor text-white h-[10vh] w-full flex justify-between items-center gap-10 ">
         <div className="Logo w-[50%] h-full flex justify-center items-center">
-          <Link href="/" className="w-[50px] h-[50px] relative">
+          <Link href="/" className="md:w-[50px] md:h-[50px] w-[30px] h-[30px] relative">
             <Image src={Logo} fill className="object-fill" />
           </Link>
         </div>

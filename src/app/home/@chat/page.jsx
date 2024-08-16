@@ -1,5 +1,5 @@
 "use client";
-import { delay, motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCode,
@@ -38,7 +38,7 @@ export default function Page() {
   };
   return (
     <>
-      <div className="w-[75%] h-full flex self-center justify-center items-center gap-20">
+      <motion.div className="md:w-[75%] w-full md:h-[90%] md:flex-row flex  flex-col justify-center items-center gap-10">
         <motion.div
           className="w-[150px] h-[150px] flex flex-col justify-between items-center rounded-xl bg-opacity-50 bg-primaryColor shadow-xl"
           animate={{ rotate: [-2, 2] }}
@@ -59,8 +59,8 @@ export default function Page() {
         <motion.div
           className="w-[150px] h-[150px] flex flex-col justify-between items-center rounded-xl bg-opacity-50 bg-primaryColor shadow-xl"
           animate={{ rotate: [-2, 2] }}
-          transition={{ duration: 2,repeatType: "reverse", repeat: Infinity }}
-          whileHover={{ backgroundColor: "#1f1f23"  }}
+          transition={{ duration: 2, repeatType: "reverse", repeat: Infinity }}
+          whileHover={{ backgroundColor: "#1f1f23" }}
         >
           {/* VECTOR */}
           <FontAwesomeIcon
@@ -89,11 +89,14 @@ export default function Page() {
           </div>
           {/* TEXT */}
         </motion.div>
-      </div>
-      <div className="flex justify-center items-center h-[10%] bg-secondaryColor w-[25%] rounded-2xl p-3">
-          <button className="" onClick={handleSubmit}>
-            Start Chat
-          </button>
+      </motion.div>
+      <div className="flex justify-center items-center md:h-[10%] h-[5%] bg-secondaryColor md:w-[30%] w-[50%] rounded-2xl p-3">
+        <button
+          className="w-full text-xl text-textColor"
+          onClick={handleSubmit}
+        >
+          Start Chat
+        </button>
       </div>
     </>
   );

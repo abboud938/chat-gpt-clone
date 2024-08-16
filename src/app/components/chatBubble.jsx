@@ -16,12 +16,6 @@ export default function ChatBubble({message ,role}){
             : (<>
             
             <div className="flex justify-between items-center rounded-3xl  text-right p-3 w-[80%]  text-wrap" >
-                <div className='w-[10%] justify-center items-start'>
-                    <motion.div className="w-[10px] h-[10px] bg-secondaryColor rounded-full "
-                    animate = {{scale:1.2}}
-                    transition={{repeatType:"reverse", repeat:Infinity}}
-                    ></motion.div>
-                </div>
                 <motion.div className= "text-textColor text-left w-full rounded-3xl bg-primaryColor bg-opacity-50 p-3" 
                 initial={{opacity:0 , scale:0.8}}
                 animate={{opacity:1 , scale:1}}> <ReactMarkdown >{message}</ReactMarkdown></motion.div>

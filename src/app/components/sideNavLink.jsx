@@ -5,10 +5,9 @@ import Link from "next/link";
 
 export default function SideNavLink ({link , title , icon}) {
     return (<>
-            <div className="w-full flex gap-3 justify-start items-center">
+            <div className="flex gap-3 justify-start items-center ">
                 <FontAwesomeIcon className="text-secondaryColor w-[15px] h-[15px]" icon={icon} />
                 <Link href={link}>{title}</Link>
-
             </div>
     </>);
 }
